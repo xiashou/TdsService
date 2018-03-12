@@ -53,7 +53,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan">
 			<list>
-				<value>com.tdskx.model</value>
+				<value>com.tdskx.*.model</value>
 			</list>
 		</property>
 
