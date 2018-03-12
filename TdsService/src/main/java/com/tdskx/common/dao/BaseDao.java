@@ -126,7 +126,7 @@ public class BaseDao<T, PK extends Serializable> {
 		Query<T> query = this.getSession().createQuery(hqlString);
 		if (values != null) {
             for (int i = 0; i < values.length; i++) {
-                query.setParameter("", values[i]);
+                query.setParameter(i, values[i]);
             }
         }
 		return Integer.valueOf(Utils.isEmpty(query.uniqueResult())?"0":query.uniqueResult().toString());
@@ -137,7 +137,7 @@ public class BaseDao<T, PK extends Serializable> {
 		Query<T> query = this.getSession().createQuery(hqlString);
 		if (values != null) {
             for (int i = 0; i < values.length; i++) {
-                query.setParameter(i+"", values[i]);
+                query.setParameter(i, values[i]);
             }
         }
 		return Utils.isEmpty(query.uniqueResult())?"":query.uniqueResult().toString();
