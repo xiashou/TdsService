@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "t_exchange")
+@Table(name = "b_exchange")
 public class Exchange {
 
 	@Id

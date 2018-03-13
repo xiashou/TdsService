@@ -8,18 +8,24 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <link type="text/css" rel="stylesheet" href="/dist/bootstrap/css/bootstrap.css">
 <style>
-.container {width: 700;}
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
 </style>
 </head>
 <body>
 	<div class="container">
-		<form class="form-signin">
+		<form class="form-signin" method="post" action="/exchange/insertExchange.atc">
 			<h2 class="form-signin-heading">添 加</h2>
-			<label for="inputEmail" class="sr-only">Email address</label> 
-			<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus=""> 
-			<label for="inputPassword" class="sr-only">Password</label> 
-			<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			<label for="inputEmail" class="sr-only">旺旺号</label> 
+			<input type="text" name="exchange.wangwang" class="form-control" placeholder="旺旺号" required="" autofocus=""> 
+			<label for="inputPassword" class="sr-only">店铺名</label> 
+			<input type="text" name="exchange.shopName" class="form-control" placeholder="店铺名" required="">
+			<label for="inputPassword" class="sr-only">产品</label> 
+			<input type="text" name="exchange.product" class="form-control" placeholder="产品" required="">
+			<button class="btn btn-lg btn-primary btn-block" type="submit">提 交</button>
 		</form>
 	</div>
 </body>

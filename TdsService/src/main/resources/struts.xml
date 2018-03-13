@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
-	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
-	"http://struts.apache.org/dtds/struts-2.1.dtd">
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
 
-	
 	<!-- 开发模式下使用，这样可以打印出更详细的日志信息 -->
 	<constant name="struts.devMode" value="true" />
 	<!-- 指定Web应用的默认编码，相当于调用request的setCharacterEncoding方法 -->
@@ -24,6 +23,8 @@
 	<constant name="struts.allowed.action.names" value="[a-zA-Z]*" />
 	<constant name="struts.multipart.parser" value="pell" />
 	<constant name="struts.multipart.maxSize" value="10485760"/>
+	
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 
 	<!-- 全局 -->
 	<package name="tsm-struts" extends="json-default">
@@ -32,16 +33,13 @@
 		<interceptors>
      		<interceptor name="authorityInterceptor" class="com.tdskx.common.interceptor.AuthorityInterceptor" />
      		<interceptor-stack name="authorityStack" >
-	      		<interceptor-ref name="authorityInterceptor">
-	      			<param name="excludeParams">dojo\..*,^struts\..*,.*\\.*,.*\(.*,.*\).*,.*@.*</param>
-	      		</interceptor-ref>
 	      		<interceptor-ref name="defaultStack" />
      		</interceptor-stack>
     	</interceptors>
     	
     	<!-- 定义默认的拦截器栈，会自动注册到所有action中 -->  
     	<default-interceptor-ref name="authorityStack"></default-interceptor-ref>  
-    
+    	
 		<global-results>
 			<result name="error">/mgr/common/error/error.jsp</result>
 			<result name="404">/mgr/common/error/404.jsp</result>
@@ -55,7 +53,7 @@
 	</package>
 	
 	<!-- 其他模块配置引入 -->
-	<include file="config/*/struts-*.xml"></include>
+	<include file="config/struts-*.xml"></include>
 
 	<package name="default" extends="struts-default">
 		<default-action-ref name="notFound" />
